@@ -2,7 +2,9 @@ from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 from pages.user_profile_update_page import UserProfileUpdatePage
 from config.env_credentials import LOGINCREDENTIALS
+import pytest
 
+@pytest.mark.video
 def test_example(page: Page) -> None:
     login_page = LoginPage(page)
     user_profile_page = UserProfileUpdatePage(page)

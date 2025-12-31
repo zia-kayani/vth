@@ -5,7 +5,7 @@ class UserProfileUpdatePage:
         self.page = page
 
         # Locators
-        self.user_profile_link = page.locator("#content").get_by_role("link", name="user-profile")
+        self.user_profile_link = page.locator(".dropdown-button.head-info")
         self.profile_settings_link = page.get_by_role("link", name=" Profile Settings")
         self.profile_tab = page.get_by_role("link", name="Profile", exact=True)
         self.password_input = page.get_by_role("textbox", name="Password", exact=True)

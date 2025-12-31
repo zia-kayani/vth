@@ -20,9 +20,19 @@ def base_url(env):
 
 # ---------- browser fixtures ----------
 @pytest.fixture
-def context(browser):
-    context = browser.new_context()
+def context(browser, request):
 
+    # Check for video recording marker
+    record_video = request.node.get_closest_marker("video")
+    if record_video:
+        context = browser.new_context(
+            record_video_dir="reports/videos/",
+            record_video_size={"width": 1280, "height": 720}
+        )
+    else:
+        context = browser.new_context()
+
+    # Start tracing for the context
     context.tracing.start(
         screenshots=True,
         snapshots=True,
